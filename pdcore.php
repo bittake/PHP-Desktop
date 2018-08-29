@@ -4,10 +4,10 @@ include($dir . '/system/password.php');
 class php_desktop{
 	public function start($Userpassword){
 		php_desktop::$c_up = (!empty($_COOKIE['up']))?$_COOKIE['up']:'';
-		
+
 		if(php_desktop::if_login(php_desktop::$c_up) ){
 			php_desktop::$login = true;
-			
+
 		}elseif(php_desktop::if_login($Userpassword) == true){
 			php_desktop::$login = true;
 			setcookie("up",$Userpassword,time() * 60 * 60 * 60 * 24 * 10);
@@ -16,7 +16,7 @@ class php_desktop{
 		}
 		php_desktop::html();
 	}
-	
+
 	public function if_login($up){
 		$logined = false;
 		if($up == ''){
@@ -28,10 +28,10 @@ class php_desktop{
 		}
 		return $logined;
 	}
-	
+
 	public function html(){
 		if(!php_desktop::$login){
-			echo 
+			echo
 				'<!doctpye html>
 				<html>
 					<head>
@@ -58,6 +58,7 @@ class php_desktop{
 					<script type="text/javascript" src="./system/Resources/js/jquery.min.js"></script>
 					<script language="javascript" src="./system/Resources/js/desktop.js.php?i=.js"></script>
 					<script language="javascript" src="./system/Resources/js/window.js"></script>
+					<script language="javascript" src="./system/Resources/js/dload.js"></script>
 				</head>
 				<body>
 					<div id="menubar"><div id="power" title="关机"></div>
@@ -74,9 +75,9 @@ class php_desktop{
 			</html>
 		');
 		}
-		
+
 	}
-	
+
 	//Username and Password
 	private static $c_up = '';
 	private static $login = false;
